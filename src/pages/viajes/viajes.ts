@@ -2,30 +2,40 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
+import {DATOS} from '../viajes/database';
+import { SuitcaseComponent } from '../../components/suitcase/suitcase';
 
+/*
+Main Page of Travel section of Gavica.
+*/ 
 @Component({
   selector: 'page-viajes',
   templateUrl: 'viajes.html'
 })
 export class ViajesPage {
   inputAge: number;
-  constructor(public navCtrl: NavController, private storage: Storage) {  }
+  //datosTest: any[] = DATOS.slice(0);
+  datosTest: any[] = [];
+  constructor(public navCtrl: NavController, private storage: Storage) { 
+    console.log(this.datosTest);
+   }
 
   createDB(){
     // set a key/value
-    this.storage.set('name', 'Max');
-    this.storage.set('age', '35');    
+    console.log("Creating Basic Data");
+    this.datosTest = DATOS.slice(0);
+    console.log(this.datosTest);
+    this.storage.set('maleta1', this.datosTest[0]);
+    this.storage.set('maleta2', this.datosTest[1]);
+    this.storage.set('maleta3', this.datosTest[2]);
   }
 
-  readDB(){
+  readDB(element){
+    console.log(element);
     // Or to get a key/value pair
-    this.storage.get('age').then((val) => {
-      console.log('Your age is', val);
-    });
 
-    // Or to get a key/value pair
-    this.storage.get('name').then((val) => {
-      console.log('Your name is', val);
+    this.storage.get(element).then((val) => {
+      console.log('Your travel is', val);
     });
   }
 
@@ -35,5 +45,15 @@ export class ViajesPage {
   
   updateDB(value) {
     this.storage.set('age', value);
+  }
+
+  itemTapped(element) {
+    console.log(element);
+    this.navCtrl.push(SuitcaseComponent, {'maletaID': element});
+  }
+
+  clearElement(id) {
+    console.log('Your travel is');
+    this.datosTest.splice(id, 1)
   }
 }

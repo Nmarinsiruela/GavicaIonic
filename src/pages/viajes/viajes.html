@@ -5,24 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-  <div><button ion-button color="primary" (click)="createDB()">Crear
-  </button></div>
-  <div><button ion-button color="primary" (click)="readDB()">Leer
-  </button></div>
-  <div><button ion-button color="primary" (click)="eraseDB()">Borrar
-  </button></div>
-  <div>
-      <ion-input placeholder="Inserta el nuevo número" type="number" [(ngModel)]="inputAge"></ion-input>
-      <button ion-button color="primary" (click)="updateDB(inputAge)">Actualizar Edad
-      </button></div>
-  
+  <ion-list *ngIf='datosTest.length > 0'>
+      <button *ngFor="let item of datosTest; let i = index" (click)="readDB(item.id)" on-hold="clearElement(i)">
+        <ion-label>{{item.nombre}}</ion-label>
+        <ion-label>{{item.tipo}}</ion-label>
+      </button>
+    </ion-list>
+  <ion-label *ngIf='datosTest.length == 0'>Inserta tu primera maleta pulsando el Botón ADD!</ion-label>
+  <ion-fab>
+      <button ion-fab (click)="createDB()">ADD</button>
+    </ion-fab>
 </ion-content>

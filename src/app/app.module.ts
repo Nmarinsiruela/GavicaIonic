@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { SuitcaseComponent } from '../components/suitcase/suitcase';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     ContactPage,
     ViajesPage,
-    TabsPage
+    TabsPage,
+    SuitcaseComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     ContactPage,
     ViajesPage,
-    TabsPage
+    TabsPage,
+    SuitcaseComponent
   ],
   providers: [
     StatusBar,
