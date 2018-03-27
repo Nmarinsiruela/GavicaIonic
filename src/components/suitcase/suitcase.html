@@ -1,5 +1,13 @@
-<!-- Generated template for the SuitcaseComponent component -->
-<div>
-  {{text}}
-  {{maleta}}
-</div>
+<ion-header>
+    <ion-navbar>
+      <ion-title>Viaje: {{maleta.nombre}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+    <div>
+        <p>{{maleta.tipo}}</p>
+        <p>{{maleta.inicio}}</p>
+        <p>{{maleta.fin}}</p>
+      </div>
+</ion-content>
+

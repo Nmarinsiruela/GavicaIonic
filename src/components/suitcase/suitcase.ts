@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the SuitcaseComponent component.
  *
@@ -12,15 +12,17 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'suitcase.html'
 })
 export class SuitcaseComponent {
-  maleta: any;
+  maleta: any = {};
   text: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
     console.log('Hello SuitcaseComponent Component');
     let maleta = this.navParams.get('maletaID');
-    this.maleta = JSON.stringify(maleta);
-    console.log(this.maleta);
-    this.text = 'Hello World';
+    this.storage.get(maleta).then((val) => {
+      this.maleta = val;
+      console.log(this.maleta);
+    });
+    
   }
 
   ionViewDidLoad() {

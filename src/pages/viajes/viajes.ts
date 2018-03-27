@@ -30,15 +30,6 @@ export class ViajesPage {
     this.storage.set('maleta3', this.datosTest[2]);
   }
 
-  readDB(element){
-    console.log(element);
-    // Or to get a key/value pair
-
-    this.storage.get(element).then((val) => {
-      console.log('Your travel is', val);
-    });
-  }
-
   eraseDB(){
     this.storage.clear();
   }
@@ -55,5 +46,9 @@ export class ViajesPage {
   clearElement(id) {
     console.log('Your travel is');
     this.datosTest.splice(id, 1)
+  }
+
+  createNew() {
+    console.log("En construcción!");
   }
 }
