@@ -22,7 +22,6 @@ export class SuitcaseComponent {
       this.maleta = val;
       console.log(this.maleta);
     });
-    
   }
 
   ionViewDidLoad() {

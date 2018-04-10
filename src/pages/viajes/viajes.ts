@@ -43,8 +43,8 @@ export class ViajesPage {
     this.navCtrl.push(SuitcaseComponent, {'maletaID': element});
   }
 
-  clearElement(id) {
-    console.log('Your travel is');
+  itemDelete(id) {
+    console.log('Elemento borrado: ' + this.datosTest[id].nombre);
     this.datosTest.splice(id, 1)
   }
 
